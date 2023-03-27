@@ -3,6 +3,7 @@ import 'package:lite_book/data/src/constants.dart';
 import 'package:lite_book/screens/onboarding/onboarding_third.dart';
 import 'package:lite_book/widgets/button/back_next_buttons.dart';
 
+import '../../data/src/strings.dart';
 import '../../widgets/button/skip_button.dart';
 import '../../widgets/image/image.dart';
 
@@ -22,11 +23,11 @@ class OnBoardingSecond extends StatelessWidget {
               imagePath: kOnBoardingSecondImagePath,
             ),
             const Text(
-              'Create daily routine',
+              secondOnBoardingTitleText,
               style: TextStyle(fontSize: 32),
             ),
             const Text(
-              'In Uptodo  you can create your personalized routine to stay productive',
+              secondOnBoardingSubtitleText,
               textAlign: TextAlign.center,
             ),
             BackAndNextButtons(

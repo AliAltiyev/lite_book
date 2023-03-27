@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+import '../../data/src/colors.dart';
 
 class BackAndNextButtons extends StatelessWidget {
   final VoidCallback? backCallback;
@@ -29,9 +30,7 @@ class BackAndNextButtons extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: nextCallBAck,
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(const Color(0xff8875FF))),
+            style: ElevatedButton.styleFrom(foregroundColor: mainAppColor),
             child: Text(buttonText == null ? 'Next' : buttonText!),
           )
         ],

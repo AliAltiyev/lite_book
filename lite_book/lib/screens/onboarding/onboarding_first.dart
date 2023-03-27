@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lite_book/data/src/constants.dart';
+import 'package:lite_book/data/src/strings.dart';
 import 'package:lite_book/screens/onboarding/onboarding_second.dart';
 import 'package:lite_book/widgets/button/skip_button.dart';
 import 'package:lite_book/widgets/image/image.dart';
@@ -20,13 +21,12 @@ class OnBoardingFirst extends StatelessWidget {
             const SkipButton(),
             const ImageAsset(imagePath: kOnBoardingFirstImagePath),
             const Text(
-              'Manage your tasks',
+              firstOnBoardingTitleText,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 32),
             ),
             const Text(
-              '''You can easily manage all of your
-daily tasks in DoMe for free''',
+              firstOnBoardingTitleText,
               textAlign: TextAlign.center,
             ),
             BackAndNextButtons(

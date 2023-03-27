@@ -4,6 +4,7 @@ import 'package:lite_book/routes/get_routes.dart';
 import 'package:lite_book/screens/add_task/add_task_controller.dart';
 import 'package:lite_book/screens/home/home_controller.dart';
 import 'package:lite_book/screens/onboarding/onboarding_first.dart';
+import 'package:lite_book/screens/registration/registration.dart';
 import 'package:lite_book/screens/registration/registration_controller.dart';
 import 'package:lite_book/screens/sign_in/sign_in_controller.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData.dark(),
       getPages: GetPages.getRoutes,
-      home: const OnBoardingFirst(),
+      home: const RegistrationPage(),
       debugShowCheckedModeBanner: false,
     );
   }

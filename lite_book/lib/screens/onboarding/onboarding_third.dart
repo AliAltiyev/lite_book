@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lite_book/data/src/constants.dart';
-import 'package:lite_book/screens/onboarding/onboarding_second.dart';
-import 'package:lite_book/screens/registration/registration.dart';
+import 'package:lite_book/screens/onboarding/start.dart';
 import 'package:lite_book/widgets/button/skip_button.dart';
 import 'package:lite_book/widgets/image/image.dart';
 
+import '../../data/src/strings.dart';
 import '../../widgets/button/back_next_buttons.dart';
 
 class OnBoardingThird extends StatelessWidget {
@@ -21,22 +21,21 @@ class OnBoardingThird extends StatelessWidget {
             const SkipButton(),
             const ImageAsset(imagePath: kOnBoardingThirdImagePath),
             const Text(
-              'Orgonaize your tasks',
-              textAlign: TextAlign.center,
+              thirdOnBoardingTitleText,
               style: TextStyle(fontSize: 32),
             ),
             const Text(
-              '''You can organize your daily tasks by adding your tasks into separate categories''',
+              thirdOnBoardingSubtitleText,
               textAlign: TextAlign.center,
             ),
             BackAndNextButtons(
-              buttonText: 'Get started',
+              buttonText: getStartedButtonText,
               backCallback: () {
                 //!Add navigation
               },
               nextCallBAck: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const RegistrationPage()));
+                    builder: (context) => const StartScreen()));
               },
             )
           ],
