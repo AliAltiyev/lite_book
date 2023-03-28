@@ -9,6 +9,14 @@ class SignInPage extends GetWidget<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [Text('Sign in page')],
+        ),
+      ),
+    );
   }
 }

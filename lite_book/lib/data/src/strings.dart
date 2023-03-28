@@ -24,3 +24,12 @@ const startScreenTitleText = 'Welcome to LiteBook';
 
 const login = 'Login';
 const createAccount = 'Create account';
+const alreadyHaveAccount = 'Already have an account? ';
+
+const username = 'Username';
+const password = 'Password';
+const email = 'Email';
+const confirmPassword = 'Confirm password';
+const or = 'or';
+
+const registration = 'Registration';
