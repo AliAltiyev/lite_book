@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lite_book/data/services/dio_manager.dart';
+import 'package:lite_book/data/services/registration/register_service_impl.dart';
+import 'package:lite_book/data/services/registration/registration_service.dart';
 import 'package:lite_book/routes/get_routes.dart';
 import 'package:lite_book/screens/add_task/add_task_controller.dart';
 import 'package:lite_book/screens/home/home_controller.dart';
@@ -28,7 +31,11 @@ class MyApp extends StatelessWidget {
   Future<dynamic> registerGetControllers() async {
     Get.create(() => HomeController());
     Get.create(() => SignInController());
-    Get.create(() => RegistrationController());
+    Get.create(() => RegistrationController(Get.find()));
     Get.create(() => AddTAskController());
+    Get.create(() => AddTAskController());
+
+    Get.lazyPut<RegisterServise>(() => RegisterServiseImpl(Get.find()));
+    Get.lazyPut(() => DioManager(), fenix: true);
   }
 }
