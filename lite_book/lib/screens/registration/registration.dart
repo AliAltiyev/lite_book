@@ -1,9 +1,10 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lite_book/data/src/colors.dart';
+import 'package:lite_book/data/src/constants.dart';
 import 'package:lite_book/data/src/strings.dart';
 import 'package:lite_book/screens/registration/registration_controller.dart';
-import 'package:lite_book/screens/sign_in/sign_in.dart';
 import 'package:lite_book/widgets/button/custom_back_icon_button.dart';
 import 'package:lite_book/widgets/button/custom_simple_button.dart';
 
@@ -15,6 +16,21 @@ class RegistrationPage extends GetWidget<RegistrationController> {
   @override
   Widget build(BuildContext context) {
     final nav = Navigator.of(context);
+
+//!Listening Getx Rx<bool> isUSerRegisteredValue
+    controller.isRegister.listen(
+      (isRegistered) {
+        if (isRegistered) _navigate(kSignInPageRoID);
+      },
+    );
+
+    controller.hasError.listen(
+      (error) {
+        if (error != null) {
+          _showSnackBar();
+        }
+      },
+    );
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -51,9 +67,7 @@ class RegistrationPage extends GetWidget<RegistrationController> {
                 height: 30,
               ),
               SimpleButton(
-                  onPressed: () {
-                    //!Add on press
-                  },
+                  onPressed: () => _registerUser(),
                   text: registration,
                   color: mainAppColor),
               const SizedBox(
@@ -74,25 +88,23 @@ class RegistrationPage extends GetWidget<RegistrationController> {
                   color: Colors.white54),
 
               //? Rich text Already do you have account
-              GestureDetector(
-                onTap: () {
-                  //!Navigation
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SignInPage()));
-                },
-                child: RichText(
-                    textAlign: TextAlign.center,
-                    text: const TextSpan(children: [
-                      TextSpan(
-                          text: alreadyHaveAccount,
-                          style: TextStyle(color: Colors.white24)),
-                      TextSpan(
-                          text: login,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w900,
-                          )),
-                    ])),
-              )
+              RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    const TextSpan(
+                        text: alreadyHaveAccount,
+                        style: TextStyle(color: Colors.white24)),
+                    TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          //!Navigation with Getx to Sign in page
+                          ..onTap = () {
+                            Get.offNamed(kSignInPageRoID);
+                          },
+                        text: login,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w900,
+                        )),
+                  ]))
             ],
           ),
         ),
@@ -148,5 +160,20 @@ class RegistrationPage extends GetWidget<RegistrationController> {
         )),
       ],
     );
+  }
+
+  void _registerUser() {
+    controller.registerUserWithRegisterServise(
+        controller.userNameTextController.text,
+        controller.emailNameTextController.text,
+        controller.confirmPasswordTextController.text);
+  }
+
+  void _navigate(String destination) {
+    Get.toNamed(destination);
+  }
+
+  void _showSnackBar() {
+    Get.snackbar('Try again', 'you have error try again');
   }
 }
