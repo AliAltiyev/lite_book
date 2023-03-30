@@ -8,6 +8,7 @@ import 'package:lite_book/screens/registration/registration_controller.dart';
 import 'package:lite_book/widgets/button/custom_back_icon_button.dart';
 import 'package:lite_book/widgets/button/custom_simple_button.dart';
 
+import '../../widgets/custom_divider.dart';
 import '../../widgets/text_field/custom_text_field.dart';
 
 class RegistrationPage extends GetWidget<RegistrationController> {
@@ -28,6 +29,14 @@ class RegistrationPage extends GetWidget<RegistrationController> {
       (error) {
         if (error != null) {
           _showSnackBar();
+        }
+      },
+    );
+
+    controller.isLoading.listen(
+      (isLoading) {
+        if (isLoading) {
+          const CircularProgressIndicator();
         }
       },
     );
@@ -73,7 +82,7 @@ class RegistrationPage extends GetWidget<RegistrationController> {
               const SizedBox(
                 height: 10,
               ),
-              _buildButtonDividers(),
+              const CustomDivider(),
               SimpleButton(
                   onPressed: () {
                     //!Add on press
@@ -143,30 +152,11 @@ class RegistrationPage extends GetWidget<RegistrationController> {
     );
   }
 
-  Row _buildButtonDividers() {
-    return Row(
-      children: const [
-        Expanded(
-            child: Divider(
-          color: Colors.white,
-        )),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: Text(or),
-        ),
-        Expanded(
-            child: Divider(
-          color: Colors.white,
-        )),
-      ],
-    );
-  }
-
   void _registerUser() {
-    controller.registerUserWithRegisterServise(
+    controller.registerUserWithRegisterService(
         controller.userNameTextController.text,
         controller.emailNameTextController.text,
-        controller.confirmPasswordTextController.text);
+        controller.passwordTextController.text);
   }
 
   void _navigate(String destination) {

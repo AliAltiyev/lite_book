@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lite_book/data/src/constants.dart';
 import 'package:lite_book/data/src/strings.dart';
-import 'package:lite_book/screens/onboarding/onboarding_second.dart';
 import 'package:lite_book/widgets/button/skip_button.dart';
 import 'package:lite_book/widgets/image/image.dart';
 
