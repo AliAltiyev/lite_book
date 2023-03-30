@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lite_book/data/services/model/registartion_request_model.dart';
-import 'package:lite_book/data/services/model/registartion_response_model.dart';
 import 'package:lite_book/data/services/registration/registration_service.dart';
+
+import '../../data/services/registration/model/registartion_request_model.dart';
+import '../../data/services/registration/model/registartion_response_model.dart';
 
 class RegistrationController extends GetxController {
   final TextEditingController userNameTextController = TextEditingController();
@@ -17,17 +18,17 @@ class RegistrationController extends GetxController {
 
   final Rxn<RegisterResponseModel> user = Rxn();
 
-  final RegisterServise _registerServise;
+  final RegisterServise _registerService;
 
-  RegistrationController(this._registerServise);
+  RegistrationController(this._registerService);
 
-  void registerUserWithRegisterServise(
+  void registerUserWithRegisterService(
       String username, String email, String password) {
     final RegisterRequestModel registerRequestModel =
         RegisterRequestModel(username, email, password);
 
     isLoading.call(true);
-    _registerServise.registerUser(registerRequestModel).then((user) {
+    _registerService.registerUser(registerRequestModel).then((user) {
       isRegister.call(true);
     }).catchError((dynamic error) {
       hasError.trigger(error);

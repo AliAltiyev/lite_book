@@ -27,6 +27,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
         ),
         child: TextField(
+          controller: textEditingController,
           textInputAction: TextInputAction.next,
           obscureText: obsecureText,
           autocorrect: true,
