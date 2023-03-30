@@ -15,7 +15,7 @@ class SignInPage extends GetWidget<SignInController> {
   @override
   Widget build(BuildContext context) {
     controller.isLogin.listen((isLogin) {
-      if (isLogin) Get.toNamed(kHomePageRoID);
+      if (isLogin) Get.offAndToNamed(kHomePageRoID);
     });
 
     controller.hasError.listen(

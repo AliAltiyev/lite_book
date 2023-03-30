@@ -33,3 +33,5 @@ const confirmPassword = 'Confirm password';
 const or = 'or';
 
 const registration = 'Registration';
+
+const home = 'Home';

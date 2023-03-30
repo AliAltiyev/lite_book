@@ -6,6 +6,7 @@ import 'package:lite_book/data/services/registration/registration_service.dart';
 import 'model/registartion_request_model.dart';
 import 'model/registartion_response_model.dart';
 
+
 class RegisterServiceImpl extends RegisterServise {
   final Dio _dio;
 

@@ -7,6 +7,7 @@ import 'package:lite_book/data/services/registration/register_service_impl.dart'
 import 'package:lite_book/data/services/registration/registration_service.dart';
 import 'package:lite_book/routes/get_routes.dart';
 import 'package:lite_book/screens/add_task/add_task_controller.dart';
+import 'package:lite_book/screens/home/home.dart';
 import 'package:lite_book/screens/home/home_controller.dart';
 import 'package:lite_book/screens/registration/registration.dart';
 import 'package:lite_book/screens/registration/registration_controller.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData.dark(),
       getPages: GetPages.getRoutes,
-      home: const RegistrationPage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
