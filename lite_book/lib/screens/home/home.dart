@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import 'package:lite_book/data/src/colors.dart';
 import 'package:lite_book/data/src/constants.dart';
 import 'package:lite_book/data/src/strings.dart';
@@ -18,7 +18,7 @@ class HomePage extends GetWidget<HomeController> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
-          title: Text(home),
+          title: const Text(home),
         ),
         backgroundColor: Colors.black,
         body: Column(
@@ -28,8 +28,7 @@ class HomePage extends GetWidget<HomeController> {
 
   Drawer _buildDrawer(BuildContext context) {
     return Drawer(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       backgroundColor: Colors.black,
       child: ListView(
         children: [
@@ -41,9 +40,7 @@ class HomePage extends GetWidget<HomeController> {
               accountName: Text('Abdusselam'),
               accountEmail: Text('alidroid@gmail.com')),
           _buildListTile(
-              icon: Icons.home,
-              label: home,
-              onPress: () => Scaffold.of(context).closeDrawer()),
+              icon: Icons.home, label: home, onPress: () => Get.back),
           _buildListTile(icon: Icons.person, label: 'Profile', onPress: () {}),
           _buildListTile(icon: Icons.info, label: 'About', onPress: () {}),
           _buildListTile(icon: Icons.logout, label: 'Sign out', onPress: () {})

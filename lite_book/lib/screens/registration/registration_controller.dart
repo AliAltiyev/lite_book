@@ -18,7 +18,7 @@ class RegistrationController extends GetxController {
 
   final Rxn<RegisterResponseModel> user = Rxn();
 
-  final RegisterServise _registerService;
+  final RegisterService _registerService;
 
   RegistrationController(this._registerService);
 

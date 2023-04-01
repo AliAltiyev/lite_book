@@ -21,10 +21,16 @@ class SignInPage extends GetWidget<SignInController> {
     controller.hasError.listen(
       (error) {
         if (error != null) {
-          _showSnackBar();
+          _showSnackBar(error.toString());
         }
       },
     );
+
+    controller.errorTexts.listen((p0) {
+      if (p0 != null) {
+        _showSnackBar(p0.toString());
+      }
+    });
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -85,9 +91,9 @@ class SignInPage extends GetWidget<SignInController> {
     return Column(
       children: [
         CustomTextField(
-            preffix: Icons.email,
-            labelText: email,
-            textEditingController: controller.emailTextEditingController,
+            preffix: Icons.person,
+            labelText: username,
+            textEditingController: controller.usernameTextEditingController,
             obsecureText: true),
         CustomTextField(
             preffix: Icons.lock,
@@ -100,11 +106,11 @@ class SignInPage extends GetWidget<SignInController> {
 
   void _login() {
     controller.loginUserWithLoginService(
-        controller.emailTextEditingController.text,
+        controller.usernameTextEditingController.text,
         controller.passwordTextEditingController.text);
   }
 
-  void _showSnackBar() {
-    Get.snackbar('Try again', 'you have error try again');
+  void _showSnackBar(String text) {
+    Get.snackbar(text,'Error');
   }
 }

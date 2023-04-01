@@ -6,7 +6,7 @@ import 'package:lite_book/data/services/login/model/login_reguest_model.dart';
 import 'package:lite_book/data/services/login/model/login_response_model.dart';
 
 class SignInController extends GetxController {
-  final TextEditingController emailTextEditingController =
+  final TextEditingController usernameTextEditingController =
       TextEditingController();
   final TextEditingController passwordTextEditingController =
       TextEditingController();
@@ -14,6 +14,7 @@ class SignInController extends GetxController {
   final Rx<bool> isLoading = RxBool(false);
   final Rxn<dynamic> hasError = Rxn();
   final Rx<bool> isLogin = Rx(false);
+  final RxnString errorTexts = RxnString();
 
   final Rxn<LoginResponseModel> user = Rxn();
 
@@ -21,16 +22,20 @@ class SignInController extends GetxController {
 
   SignInController(this._loginServiceImpl);
 
-  void loginUserWithLoginService(String email, String password) {
-    final LoginRequestModel requestModel = LoginRequestModel(email, password);
+  void loginUserWithLoginService(String username, String password) {
+    final LoginRequestModel requestModel = LoginRequestModel(username, password);
 
     isLoading.call(true);
     _loginServiceImpl
         .loginUser(requestModel)
         .then((user) {
-        isLogin.trigger(true);
+          if (user.statu == 1) errorTexts.call('error password');
+          if (user.statu == 0) errorTexts('user not found');
+          if (user.statu == 2) isLogin.call(true);
         })
-        .catchError((error) {})
+        .catchError((error) {
+          hasError.call("Error 123456");
+    })
         .whenComplete(() => isLoading.call(false));
   }
 }

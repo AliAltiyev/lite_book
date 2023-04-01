@@ -4,8 +4,8 @@ LoginResponseModel loginResponseModelFromJson(String str) =>
     LoginResponseModel.fromJson(json.decode(str));
 
 class LoginResponseModel {
-  final bool statu;
-  final String? message;
+  final int statu;
+  final String message;
   final String? email;
   final String? userId;
 

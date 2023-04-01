@@ -6,8 +6,7 @@ import 'package:lite_book/data/services/registration/registration_service.dart';
 import 'model/registartion_request_model.dart';
 import 'model/registartion_response_model.dart';
 
-
-class RegisterServiceImpl extends RegisterServise {
+class RegisterServiceImpl extends RegisterService {
   final Dio _dio;
 
   RegisterServiceImpl(DioManager dioManager) : _dio = dioManager.dio;
@@ -24,6 +23,7 @@ class RegisterServiceImpl extends RegisterServise {
     // } catch (e) {
     //   print(e);
     // }
+
     try {
       final response = await http.post(
           Uri.parse('https://vh123.by2050.ihb.by/litebook/register.php'),

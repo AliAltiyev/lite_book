@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lite_book/screens/registration/registration.dart';
+import 'package:get/get.dart';
+import 'package:lite_book/data/src/constants.dart';
 import 'package:lite_book/widgets/button/custom_simple_button.dart';
 
 import '../../data/src/colors.dart';
@@ -41,11 +42,15 @@ class StartScreen extends StatelessWidget {
   Column _buildButtons(BuildContext context) {
     return Column(
       children: [
-        SimpleButton(onPressed: () {}, text: login, color: mainAppColor),
         SimpleButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const RegistrationPage()));
+              Get.offAndToNamed(kSignInPageRoID);
+            },
+            text: login,
+            color: mainAppColor),
+        SimpleButton(
+            onPressed: () {
+              Get.offAndToNamed(kRegistrationPageRoID);
             },
             text: createAccount,
             color: Colors.white70)
